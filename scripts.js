@@ -28,6 +28,8 @@ function initComponents() {
   nextBtn.setAttribute("type", "submit");
   nextBtn.setAttribute("value", "Next-->");
   form.appendChild(nextBtn);
+
+  return false;
 }
 
 function validateEnteredNumber() {
@@ -39,6 +41,7 @@ function validateEnteredNumber() {
   } else {
     document.getElementById("number-feild").style.border = "1px solid red";
   }
+  return false;
 }
 
 function setUpPlayComponents() {
@@ -113,22 +116,25 @@ function genarateExpectedNumber() {
 
 function validateEquality(expectedNumber) {
   if (expectedNumber == acualValue) {
-    Swal.fire({
+  /*   Swal.fire({
       title: "Good job!",
       text: "You get the true number!",
       icon: "success",
       willClose: closeMsg,
-    });
-
+    }); */
+    alert("You get the true number!");
+    closeMsg();
     document.getElementsByClassName("centered-box")[0].style.display = "none";
   } else {
     document.getElementsByClassName("centered-box")[0].style.display = "none";
-    Swal.fire({
+    /* Swal.fire({
       icon: "error",
       title: "Oops...",
       text: "you have fail!",
       willClose: closeMsg,
-    });
+    }); */
+    alert("you have fail");
+    closeMsg();
     const myNode = document.getElementsByClassName("item-container")[0];
     while (myNode.firstChild) {
       myNode.removeChild(myNode.lastChild);
@@ -139,12 +145,14 @@ function validateEquality(expectedNumber) {
 function validateRange() {
   if (max == min || acualValue > max || acualValue < min) {
     document.getElementsByClassName("centered-box")[0].style.display = "none";
-    Swal.fire({
+    /* Swal.fire({
       icon: "error",
       title: "Oops...",
       text: "you have fail!",
       willClose: closeMsg,
-    });
+    }); */
+    alert("you have fail!");
+    closeMsg();
     const myNode = document.getElementsByClassName("item-container")[0];
     while (myNode.firstChild) {
       myNode.removeChild(myNode.lastChild);
